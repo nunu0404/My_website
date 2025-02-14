@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나의 개인 웹사이트</title>
 <style>
-/* 기본 리셋 및 부드러운 스크롤 */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -16,16 +16,19 @@ html {
 }
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
   background-color: #f4f4f4;
   color: #333;
-  line-height: 1.6;
 }
-
-/* Header 스타일 */
+/* Header */
 header {
   background: #007BFF;
   padding: 20px 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 .container {
   width: 90%;
@@ -38,21 +41,21 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
-nav .menu a {
+nav a {
   color: #fff;
   text-decoration: none;
   margin-left: 15px;
   font-weight: bold;
   transition: color 0.3s;
 }
-nav .menu a:hover {
+nav a:hover {
   color: #e0e0e0;
 }
 .logo h1 {
   color: #fff;
 }
 
-/* Hero 섹션 */
+/* Hero Section */
 .hero {
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg-welcome.jpg') no-repeat center center/cover;
   height: 400px;
@@ -60,6 +63,7 @@ nav .menu a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 80px; /* 헤더 높이 고려 */
   animation: fadeIn 1.5s ease-out;
 }
 .hero h1 {
@@ -68,41 +72,46 @@ nav .menu a:hover {
   animation: fadeInUp 1s ease-out forwards;
 }
 
-/* 애니메이션 키프레임 */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Section 공통 스타일 */
-section {
-  padding: 40px 0;
-}
-.intro {
+/* Intro Section */
+#intro {
   background: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 60px 20px;
+  margin-top: 20px;
+  animation: fadeIn 1s ease-out;
 }
-.intro h2 {
-  margin-bottom: 20px;
+.intro-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.profile-image {
+  flex: 1;
+  max-width: 250px;
+  margin: 20px;
+  animation: fadeInUp 1s ease-out;
+}
+.profile-image img {
+  width: 100%;
+  border-radius: 50%;
+}
+.profile-info {
+  flex: 2;
+  margin: 20px;
+  animation: fadeInUp 1s ease-out;
+}
+.profile-info h2 {
+  color: #007BFF;
+  margin-bottom: 10px;
+}
+.profile-info p {
+  margin: 5px 0;
 }
 
-/* Resume 섹션 */
+/* Resume Section */
 #resume {
   background: #e9f1ff;
-  padding: 60px 0;
+  padding: 60px 20px;
 }
 #resume h2 {
   text-align: center;
@@ -113,8 +122,8 @@ section {
 .resume-card {
   background: #fff;
   padding: 20px;
-  margin-bottom: 20px;
   border-left: 5px solid #007BFF;
+  margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   opacity: 0;
@@ -122,7 +131,7 @@ section {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 .resume-card:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -147,16 +156,15 @@ section {
   background: #0056b3;
 }
 
-/* Contact 섹션 */
+/* Contact Section */
 #contact {
   background: #fff;
-  padding: 20px;
+  padding: 40px 20px;
   border-radius: 5px;
-  text-align: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-#contact h2 {
-  margin-bottom: 20px;
+  text-align: center;
+  margin: 20px;
+  animation: fadeIn 1s ease-out;
 }
 
 /* Footer */
@@ -166,20 +174,33 @@ footer {
   text-align: center;
   padding: 20px 0;
 }
-footer .footer-info {
-  margin-bottom: 10px;
-}
 footer p {
   margin: 5px 0;
 }
 
-/* 반응형 디자인 */
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  nav {
+  .intro-wrapper {
     flex-direction: column;
   }
-  .resume-card {
-    animation: fadeInUp 0.8s ease-out forwards;
+  .profile-image, .profile-info {
+    margin: 10px;
   }
 }
 </style>
@@ -189,11 +210,11 @@ footer p {
   <div class="container">
     <nav>
       <div class="logo">
-        <h1>Ju Seong Min</h1>
+        <h1>Winter Potato</h1>
       </div>
       <div class="menu">
         <a href="#intro">소개</a>
-        <a href="#resume">이력서</a>
+        <a href="#resume">이력</a>
         <a href="#contact">연락처</a>
       </div>
     </nav>
@@ -203,51 +224,47 @@ footer p {
   <h1>Welcome to My Personal Page</h1>
 </div>
 <section id="intro">
-  <div class="container intro">
-    <h2>안녕하세요</h2>
-    <p>여기는 나의 개인 웹사이트입니다. 저에 대한 소개와 이력서를 확인해보세요.</p>
+  <div class="container">
+    <div class="intro-wrapper">
+      <div class="profile-image">
+        <img src="profile.jpg" alt="프로필 이미지">
+      </div>
+      <div class="profile-info">
+        <h2>안녕하세요, SEONGMIN JU입니다.</h2>
+        <p><strong>학생 신분:</strong> Undergraduate student</p>
+        <p><strong>학교:</strong> Daegu Gyeongbuk Institute of Science and Technology</p>
+        <p><strong>주소:</strong> 333 Techno jungang-daero, Hyeonpung-eup, Dalseong-gun, Daegu, 42988, Republic of Korea</p>
+        <p><strong>이메일:</strong> netraa2008@dgist.ac.kr</p>
+        <p><strong>전화번호:</strong> +82) 10-2128-2204</p>
+      </div>
+    </div>
   </div>
 </section>
 <section id="resume">
   <div class="container">
     <h2>이력서</h2>
-    <!-- 개인 정보 -->
     <div class="resume-card" style="animation-delay: 0.2s;">
-      <h3>개인 정보</h3>
-      <p><strong>이름:</strong> SEONGMIN JU</p>
-      <p><strong>학생 신분:</strong> Undergraduate student</p>
-      <p><strong>학교:</strong> Daegu Gyeongbuk Institute of Science and Technology</p>
-      <p><strong>주소:</strong> 333 Techno jungang-daero, Hyeonpung-eup, Dalseong-gun, Daegu, 42988, Republic of Korea</p>
-      <p><strong>이메일:</strong> netraa2008@dgist.ac.kr</p>
-      <p><strong>전화번호:</strong> +82) 10-2128-2204</p>
-      <a href="CV_주성민.pdf" target="_blank" class="btn">PDF로 이력서 보기</a>
-    </div>
-    <!-- 학력 및 연구 -->
-    <div class="resume-card" style="animation-delay: 0.4s;">
       <h3>학력 및 연구</h3>
       <p><strong>기간:</strong> Mar. 2021 ~ Present</p>
       <p><strong>학교:</strong> Daegu Gyeongbuk Institute of Science and Technology, School of Undergraduate Studies</p>
       <p><strong>Thesis:</strong> Development of Explainable AI System for Emotion Recognition and Application</p>
       <p><strong>지도교수:</strong> jeanyoung Song</p>
-      <p><strong>학위:</strong> Bachelor Student</p>
+      <p><strong>학위:</strong> Bachelor Student (GPA: 3.38 / 4.3)</p>
     </div>
-    <!-- 연구 경험 -->
-    <div class="resume-card" style="animation-delay: 0.6s;">
+    <div class="resume-card" style="animation-delay: 0.4s;">
       <h3>연구 경험</h3>
       <p><strong>Research Student:</strong> Electrical Engineering and Computer Science, DGIST, Korea (Mar. 2024 ~ Aug. 2024) - HCI Research Planning in Autonomous Driving System</p>
       <p><strong>Research Intern:</strong> DGIST, Korea (Dec. 2023 ~ Jan. 2024) - Study on the Explainable Multimodal Emotion Recognition System</p>
       <p><strong>Research Intern:</strong> DGIST, Korea (Jun. 2023 ~ Jul. 2023) - Paper review on Human-AI</p>
     </div>
-    <!-- THESIS -->
-    <div class="resume-card" style="animation-delay: 0.8s;">
-      <h3>THESIS</h3>
+    <div class="resume-card" style="animation-delay: 0.6s;">
+      <h3>논문 및 프로젝트</h3>
       <p>1. A Study on Multi-Modal Emotion Recognition Systems.</p>
       <p>2. Exploring explainable artificial intelligence (XAI) methodologies.</p>
       <p>3. Proposed a explainable multimodal emotion recognition system by the pseudocode.</p>
       <p>Thesis Accepted by Taking UGRP Course, DGIST, Korea (Jan. 2023 ~ Dec. 2023)</p>
     </div>
-    <!-- 수상 및 경력 -->
-    <div class="resume-card" style="animation-delay: 1s;">
+    <div class="resume-card" style="animation-delay: 0.8s;">
       <h3>수상 및 경력</h3>
       <p>2023 청년 창업경진대회 동상, 대구광역시 북구청, Korea (Apr. 2023)</p>
       <p>PCEO X ACCEL 사업아이디어 공모전 개인부문 우수상, POSTECH 영재기업인교육원, Korea (Nov. 2022)</p>
@@ -257,27 +274,23 @@ footer p {
       <p>2022 SKHU 창업경진대회 장려상, 성공회대학교, Korea (Jun. 2022)</p>
       <p>2022 예비창업패키지 최종선정 (40,000,000원), 대구창조경제혁신센터, Korea (May. 2022)</p>
     </div>
-    <!-- 특허 -->
-    <div class="resume-card" style="animation-delay: 1.2s;">
+    <div class="resume-card" style="animation-delay: 1s;">
       <h3>특허</h3>
       <p>1. SEONGMIN JU, SIHWAN SEOK, HAEWON JEON, HAIM LEE, "사용자 주도형 인공지능 데이터 수집 방법 및 시스템", KR-Application No. 10-2023-0005909</p>
       <p>2. SEONGMIN JU, "DauCus(데이커스)", KR-Application No. 40-2022-0239713</p>
     </div>
-    <!-- 해외 및 기타 경험 -->
-    <div class="resume-card" style="animation-delay: 1.4s;">
+    <div class="resume-card" style="animation-delay: 1.2s;">
       <h3>해외 및 기타 경험</h3>
-      <p><strong>해외 경험:</strong> CES 2023 → Observe and Survey Technology with Generative AI and Data; UC Berkeley 및 Silicon Valley 기업 방문 → 미국 스타트업 시스템 및 문화 조사</p>
-      <p><strong>교육 활동:</strong> 5 online teaching assistants, 5 offline training assistants 및 다양한 교육 활동 (특허 신청, 사업 기회 탐색, 비즈니스 모델 및 계획 수립 등)</p>
+      <p>해외 경험: CES 2023 → Observe and Survey Technology with Generative AI and Data; Visit UC Berkeley and Silicon Valley companies → Survey of Start-up System and Culture in the U.S</p>
+      <p>교육 활동: 5 online teaching assistants, 5 offline training assistants 등 다양한 교육 활동 진행</p>
     </div>
-    <!-- 경력 -->
-    <div class="resume-card" style="animation-delay: 1.6s;">
+    <div class="resume-card" style="animation-delay: 1.4s;">
       <h3>경력</h3>
-      <p><strong>Contract Worker:</strong> Management Support Team, (주)리필, Korea (Jul. 2024 ~ Jan. 2025) – Management Support, Program Development, Market Research</p>
-      <p><strong>CEO:</strong> Management team, Happy Circuit, Korea (Mar. 2022 ~ Mar. 2024) – Life style platform for AI data collection, Item Planning and Management</p>
-      <p><strong>Project Manager & UI/UX Designer:</strong> Planning and Operation Team, (주)온클라우드9, Korea (Sep. 2021 ~ Mar. 2022) – Service Planning and UI/UX Design</p>
+      <p>Contract Worker at Management Support Team, (주)리필, Korea (Jul. 2024 ~ Jan. 2025) – Management Support, Program Development, Market Research</p>
+      <p>CEO at management team, Happy Circuit, Korea (Mar. 2022 ~ Mar. 2024) – Life style platform for AI data collection, Item Planning and Management</p>
+      <p>Project Manager and UI/UX Designer at Planning and Operation Team, (주)온클라우드9, Korea (Sep. 2021 ~ Mar. 2022) – Service Planning and UI/UX Design</p>
     </div>
-    <!-- 기술 및 역량 -->
-    <div class="resume-card" style="animation-delay: 1.8s;">
+    <div class="resume-card" style="animation-delay: 1.6s;">
       <h3>기술 및 역량</h3>
       <p>TOEIC Speaking IH (Intermediate High)</p>
       <p>Python, C++, Raspberry Pi</p>
@@ -285,10 +298,14 @@ footer p {
       <p>4차산업혁명 청년체험단 5기 활동 (Sep. 2022 ~ Feb. 2023)</p>
       <p>POSTECH 영재기업인교육원 Educational Assistant (Jan. 2022 ~ )</p>
     </div>
+    <div class="resume-card" style="animation-delay: 1.8s;">
+      <h3>기타</h3>
+      <a href="CV_주성민.pdf" target="_blank" class="btn">PDF로 이력서 전체보기</a>
+    </div>
   </div>
 </section>
 <section id="contact">
-  <div class="container intro">
+  <div class="container" style="margin:20px;">
     <h2>연락처</h2>
     <p><strong>이메일:</strong> netraa2008@dgist.ac.kr</p>
     <p><strong>전화번호:</strong> +82) 10-2128-2204</p>
@@ -297,5 +314,13 @@ footer p {
 </section>
 <footer>
   <div class="container">
-    <div class="footer-info">
-      <p>© 2025 JuSeongMin. Powered by Github Page.</p>
+    <p>© 2025 JU SEONG MIN. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+  window.onload = function(){
+    window.scrollTo(0,0);
+  };
+</script>
+</body>
+</html>

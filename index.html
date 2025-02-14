@@ -11,16 +11,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-/* 기본 스타일 */
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.6;
   background-color: #f4f4f4;
   color: #333;
 }
-
-/* 헤더 */
+/* Header */
 header {
   background: #007BFF;
   padding: 20px 0;
@@ -50,22 +47,40 @@ nav a:hover {
 .logo h1 {
   color: #fff;
 }
-
-/* Hero 섹션 */
+/* Hero Section with Background Image and Animation */
 .hero {
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg-welcome.jpg') no-repeat center center/cover;
   height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
   text-align: center;
+  animation: fadeIn 1.5s ease-out;
 }
 .hero h1 {
   font-size: 3rem;
+  color: #fff;
+  animation: fadeInUp 1s ease-out forwards;
 }
-
-/* 일반 섹션 스타일 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Section */
 section {
   padding: 40px 0;
 }
@@ -79,31 +94,7 @@ section {
 .intro h2 {
   margin-bottom: 20px;
 }
-
-/* Portfolio 섹션 */
-.portfolio {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-.portfolio-item {
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  overflow: hidden;
-  width: calc(33.333% - 20px);
-  min-width: 280px;
-}
-.portfolio-item img {
-  width: 100%;
-  display: block;
-}
-.portfolio-item .content {
-  padding: 15px;
-}
-
-/* Resume 섹션 */
+/* Resume Section */
 #resume {
   background: #e9f1ff;
   padding: 60px 0;
@@ -121,6 +112,14 @@ section {
   margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+.resume-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .resume-card h3 {
   color: #007BFF;
@@ -137,9 +136,12 @@ section {
   border-radius: 4px;
   text-decoration: none;
   margin-top: 10px;
+  transition: background 0.3s;
 }
-
-/* Contact 섹션 */
+.btn:hover {
+  background: #0056b3;
+}
+/* Contact Section */
 #contact {
   background: #fff;
   padding: 20px;
@@ -147,7 +149,6 @@ section {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   text-align: center;
 }
-
 /* Footer */
 footer {
   background: #333;
@@ -158,18 +159,13 @@ footer {
 footer p {
   margin: 5px 0;
 }
-
-/* 반응형 */
+/* Responsive */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
   }
-  .portfolio {
-    flex-direction: column;
-    align-items: center;
-  }
-  .portfolio-item {
-    width: 80%;
+  .resume-card {
+    animation: fadeInUp 0.8s ease-out forwards;
   }
 }
 </style>
@@ -183,7 +179,6 @@ footer p {
       </div>
       <div class="menu">
         <a href="#intro">소개</a>
-        <a href="#portfolio">포트폴리오</a>
         <a href="#resume">이력서</a>
         <a href="#contact">연락처</a>
       </div>
@@ -191,46 +186,18 @@ footer p {
   </div>
 </header>
 <div class="hero">
-  <h1>Welcome to My Personal Website</h1>
+  <h1>Welcome to My Personal Page</h1>
 </div>
 <section id="intro">
   <div class="container intro">
     <h2>안녕하세요</h2>
-    <p>여기는 나의 개인 웹사이트입니다. 저에 대한 소개와 포트폴리오, 이력서를 확인해보세요.</p>
-  </div>
-</section>
-<section id="portfolio">
-  <div class="container">
-    <h2 style="text-align:center; margin-bottom:20px;">포트폴리오</h2>
-    <div class="portfolio">
-      <div class="portfolio-item">
-        <img src="project1.jpg" alt="프로젝트 1">
-        <div class="content">
-          <h3>프로젝트 1</h3>
-          <p>프로젝트 1에 대한 간략한 설명입니다.</p>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="project2.jpg" alt="프로젝트 2">
-        <div class="content">
-          <h3>프로젝트 2</h3>
-          <p>프로젝트 2에 대한 간략한 설명입니다.</p>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <img src="project3.jpg" alt="프로젝트 3">
-        <div class="content">
-          <h3>프로젝트 3</h3>
-          <p>프로젝트 3에 대한 간략한 설명입니다.</p>
-        </div>
-      </div>
-    </div>
+    <p>여기는 나의 개인 웹사이트입니다. 저에 대한 소개와 이력서를 확인해보세요.</p>
   </div>
 </section>
 <section id="resume">
   <div class="container">
     <h2>이력서</h2>
-    <div class="resume-card">
+    <div class="resume-card" style="animation-delay: 0.2s;">
       <h3>개인 정보</h3>
       <p><strong>이름:</strong> SEONGMIN JU</p>
       <p><strong>학생 신분:</strong> Undergraduate student</p>
@@ -240,7 +207,7 @@ footer p {
       <p><strong>전화번호:</strong> +82) 10-2128-2204</p>
       <a href="CV_주성민.pdf" target="_blank" class="btn">PDF로 보기</a>
     </div>
-    <div class="resume-card">
+    <div class="resume-card" style="animation-delay: 0.4s;">
       <h3>학력 및 연구</h3>
       <p><strong>기간:</strong> Mar. 2021 ~ Present</p>
       <p><strong>학교:</strong> Daegu Gyeongbuk Institute of Science and Technology, School of Undergraduate Studies</p>
@@ -248,46 +215,12 @@ footer p {
       <p><strong>지도교수:</strong> jeanyoung Song</p>
       <p><strong>학위:</strong> Bachelor Student (GPA: 3.38 / 4.3)</p>
     </div>
-    <div class="resume-card">
+    <div class="resume-card" style="animation-delay: 0.6s;">
       <h3>연구 경험</h3>
       <p><strong>Research Student:</strong> Electrical Engineering and Computer Science, DGIST, Korea (Mar. 2024 ~ Aug. 2024) - HCI Research Planning in Autonomous Driving System</p>
       <p><strong>Research Intern:</strong> DGIST, Korea (Dec. 2023 ~ Jan. 2024) - Study on the Explainable Multimodal Emotion Recognition System</p>
       <p><strong>Research Intern:</strong> DGIST, Korea (Jun. 2023 ~ Jul. 2023) - Paper review on Human-AI</p>
     </div>
-    <div class="resume-card">
+    <div class="resume-card" style="animation-delay: 0.8s;">
       <h3>논문 및 프로젝트</h3>
-      <p>1. A Study on Multi-Modal Emotion Recognition Systems.</p>
-      <p>2. Exploring explainable artificial intelligence (XAI) methodologies.</p>
-      <p>3. Proposed a explainable multimodal emotion recognition system by the pseudocode.</p>
-      <p>Thesis Accepted by Taking UGRP Course, DGIST, Korea (Jan. 2023 ~ Dec. 2023)</p>
-    </div>
-    <div class="resume-card">
-      <h3>수상 및 경력</h3>
-      <p>2023 청년 창업경진대회 동상, 대구광역시 북구청, Korea (Apr. 2023)</p>
-      <p>PCEO X ACCEL 사업아이디어 공모전 개인부문 우수상, POSTECH 영재기업인교육원, Korea (Nov. 2022)</p>
-      <p>PCEO X ACCEL 사업아이디어 공모전 팀부문 우수상, POSTECH 영재기업인교육원, Korea (Nov. 2022)</p>
-      <p>2022 ClutG-Star League 최우수상, 대구창조경제혁신센터, Korea (Nov. 2022)</p>
-      <p>2022 Global Innovator Festa K-리그 우수상, 대구창조경제혁신센터, Korea (Oct. 2022)</p>
-      <p>2022 SKHU 창업경진대회 장려상, 성공회대학교, Korea (Jun. 2022)</p>
-      <p>2022 예비창업패키지 최종선정 (40,000,000원), 대구창조경제혁신센터, Korea (May. 2022)</p>
-    </div>
-    <div class="resume-card">
-      <h3>특허</h3>
-      <p>1. SEONGMIN JU, SIHWAN SEOK, HAEWON JEON, HAIM LEE, "사용자 주도형 인공지능 데이터 수집 방법 및 시스템", KR-Application No. 10-2023-0005909</p>
-      <p>2. SEONGMIN JU, "DauCus(데이커스)", KR-Application No. 40-2022-0239713</p>
-    </div>
-    <div class="resume-card">
-      <h3>해외 및 기타 경험</h3>
-      <p>해외 경험: CES 2023 → Observe and Survey Technology with Generative AI and Data; Visit UC Berkeley and Silicon Valley companies → Survey of Start-up System and Culture in the U.S</p>
-      <p>교육 활동: 5 online teaching assistants, 5 offline training assistants 등 다양한 교육 활동 진행</p>
-    </div>
-    <div class="resume-card">
-      <h3>경력</h3>
-      <p>Contract Worker at Management Support Team, (주)리필, Korea (Jul. 2024 ~ Jan. 2025) – Management Support, Program Development, Market Research</p>
-      <p>CEO at management team, Happy Circuit, Korea (Mar. 2022 ~ Mar. 2024) – Life style platform for AI data collection, Item Planning and Management</p>
-      <p>Project Manager and UI/UX Designer at Planning and Operation Team, (주)온클라우드9, Korea (Sep. 2021 ~ Mar. 2022) – Service Planning and UI/UX Design</p>
-    </div>
-    <div class="resume-card">
-      <h3>기술 및 역량</h3>
-      <p>TOEIC Speaking IH (Intermediate High)</p>
-      <p>Pyt
+      <p>1. A Study o

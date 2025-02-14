@@ -93,6 +93,20 @@ footer {
   text-align: center;
   padding: 20px 0;
 }
+footer .footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+footer .footer-content .resume a {
+  color: #fff;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+footer .footer-content .contact-info p {
+  margin: 5px 0;
+}
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -143,4 +157,41 @@ footer {
         </div>
       </div>
       <div class="portfolio-item">
-      
+        <img src="project2.jpg" alt="프로젝트 2">
+        <div class="content">
+          <h3>프로젝트 2</h3>
+          <p>프로젝트 2에 대한 간략한 설명입니다.</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="project3.jpg" alt="프로젝트 3">
+        <div class="content">
+          <h3>프로젝트 3</h3>
+          <p>프로젝트 3에 대한 간략한 설명입니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contact">
+  <div class="container intro">
+    <h2>연락처</h2>
+    <p>이메일: example@example.com</p>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="resume">
+        <a href="resume.pdf" target="_blank">이력서 확인</a>
+      </div>
+      <div class="contact-info">
+        <p>이메일: example@example.com</p>
+        <p>전화번호: 010-1234-5678</p>
+      </div>
+    </div>
+    <p>© 2025 내 이름. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

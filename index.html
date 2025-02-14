@@ -5,19 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>나의 개인 웹사이트</title>
 <style>
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* 기본 스타일 */
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.6;
   background-color: #f4f4f4;
   color: #333;
 }
+
+/* 헤더 */
 header {
-  background: #fff;
+  background: #007BFF;
   padding: 20px 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -33,13 +38,22 @@ nav {
   align-items: center;
 }
 nav a {
-  color: #333;
+  color: #fff;
   text-decoration: none;
   margin-left: 15px;
   font-weight: bold;
+  transition: color 0.3s;
 }
+nav a:hover {
+  color: #e0e0e0;
+}
+.logo h1 {
+  color: #fff;
+}
+
+/* Hero 섹션 */
 .hero {
-  background: url('hero.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero.jpg') no-repeat center center/cover;
   height: 400px;
   display: flex;
   justify-content: center;
@@ -49,10 +63,9 @@ nav a {
 }
 .hero h1 {
   font-size: 3rem;
-  background-color: rgba(0,0,0,0.5);
-  padding: 10px 20px;
-  border-radius: 5px;
 }
+
+/* 일반 섹션 스타일 */
 section {
   padding: 40px 0;
 }
@@ -66,6 +79,8 @@ section {
 .intro h2 {
   margin-bottom: 20px;
 }
+
+/* Portfolio 섹션 */
 .portfolio {
   display: flex;
   flex-wrap: wrap;
@@ -87,26 +102,64 @@ section {
 .portfolio-item .content {
   padding: 15px;
 }
+
+/* Resume 섹션 */
+#resume {
+  background: #e9f1ff;
+  padding: 60px 0;
+}
+#resume h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #007BFF;
+  font-size: 2.5rem;
+}
+.resume-card {
+  background: #fff;
+  padding: 20px;
+  border-left: 5px solid #007BFF;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.resume-card h3 {
+  color: #007BFF;
+  margin-bottom: 15px;
+}
+.resume-card p {
+  margin: 8px 0;
+}
+.btn {
+  display: inline-block;
+  background: #007BFF;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+/* Contact 섹션 */
+#contact {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Footer */
 footer {
   background: #333;
   color: #fff;
   text-align: center;
   padding: 20px 0;
 }
-footer .footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-}
-footer .footer-content .resume a {
-  color: #fff;
-  text-decoration: underline;
-  margin-bottom: 10px;
-}
-footer .footer-content .contact-info p {
+footer p {
   margin: 5px 0;
 }
+
+/* 반응형 */
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -131,6 +184,7 @@ footer .footer-content .contact-info p {
       <div class="menu">
         <a href="#intro">소개</a>
         <a href="#portfolio">포트폴리오</a>
+        <a href="#resume">이력서</a>
         <a href="#contact">연락처</a>
       </div>
     </nav>
@@ -142,7 +196,7 @@ footer .footer-content .contact-info p {
 <section id="intro">
   <div class="container intro">
     <h2>안녕하세요</h2>
-    <p>여기는 나의 개인 웹사이트입니다. 저에 대한 소개와 포트폴리오를 확인해보세요.</p>
+    <p>여기는 나의 개인 웹사이트입니다. 저에 대한 소개와 포트폴리오, 이력서를 확인해보세요.</p>
   </div>
 </section>
 <section id="portfolio">
@@ -173,25 +227,67 @@ footer .footer-content .contact-info p {
     </div>
   </div>
 </section>
-<section id="contact">
-  <div class="container intro">
-    <h2>연락처</h2>
-    <p>이메일: example@example.com</p>
-  </div>
-</section>
-<footer>
+<section id="resume">
   <div class="container">
-    <div class="footer-content">
-      <div class="resume">
-        <a href="resume.pdf" target="_blank">이력서 확인</a>
-      </div>
-      <div class="contact-info">
-        <p>이메일: example@example.com</p>
-        <p>전화번호: 010-1234-5678</p>
-      </div>
+    <h2>이력서</h2>
+    <div class="resume-card">
+      <h3>개인 정보</h3>
+      <p><strong>이름:</strong> SEONGMIN JU</p>
+      <p><strong>학생 신분:</strong> Undergraduate student</p>
+      <p><strong>학교:</strong> Daegu Gyeongbuk Institute of Science and Technology</p>
+      <p><strong>주소:</strong> 333 Techno jungang-daero, Hyeonpung-eup, Dalseong-gun, Daegu, 42988, Republic of Korea</p>
+      <p><strong>이메일:</strong> netraa2008@dgist.ac.kr</p>
+      <p><strong>전화번호:</strong> +82) 10-2128-2204</p>
+      <a href="CV_주성민.pdf" target="_blank" class="btn">PDF로 보기</a>
     </div>
-    <p>© 2025 내 이름. All rights reserved.</p>
-  </div>
-</footer>
-</body>
-</html>
+    <div class="resume-card">
+      <h3>학력 및 연구</h3>
+      <p><strong>기간:</strong> Mar. 2021 ~ Present</p>
+      <p><strong>학교:</strong> Daegu Gyeongbuk Institute of Science and Technology, School of Undergraduate Studies</p>
+      <p><strong>Thesis:</strong> Development of Explainable AI System for Emotion Recognition and Application</p>
+      <p><strong>지도교수:</strong> jeanyoung Song</p>
+      <p><strong>학위:</strong> Bachelor Student (GPA: 3.38 / 4.3)</p>
+    </div>
+    <div class="resume-card">
+      <h3>연구 경험</h3>
+      <p><strong>Research Student:</strong> Electrical Engineering and Computer Science, DGIST, Korea (Mar. 2024 ~ Aug. 2024) - HCI Research Planning in Autonomous Driving System</p>
+      <p><strong>Research Intern:</strong> DGIST, Korea (Dec. 2023 ~ Jan. 2024) - Study on the Explainable Multimodal Emotion Recognition System</p>
+      <p><strong>Research Intern:</strong> DGIST, Korea (Jun. 2023 ~ Jul. 2023) - Paper review on Human-AI</p>
+    </div>
+    <div class="resume-card">
+      <h3>논문 및 프로젝트</h3>
+      <p>1. A Study on Multi-Modal Emotion Recognition Systems.</p>
+      <p>2. Exploring explainable artificial intelligence (XAI) methodologies.</p>
+      <p>3. Proposed a explainable multimodal emotion recognition system by the pseudocode.</p>
+      <p>Thesis Accepted by Taking UGRP Course, DGIST, Korea (Jan. 2023 ~ Dec. 2023)</p>
+    </div>
+    <div class="resume-card">
+      <h3>수상 및 경력</h3>
+      <p>2023 청년 창업경진대회 동상, 대구광역시 북구청, Korea (Apr. 2023)</p>
+      <p>PCEO X ACCEL 사업아이디어 공모전 개인부문 우수상, POSTECH 영재기업인교육원, Korea (Nov. 2022)</p>
+      <p>PCEO X ACCEL 사업아이디어 공모전 팀부문 우수상, POSTECH 영재기업인교육원, Korea (Nov. 2022)</p>
+      <p>2022 ClutG-Star League 최우수상, 대구창조경제혁신센터, Korea (Nov. 2022)</p>
+      <p>2022 Global Innovator Festa K-리그 우수상, 대구창조경제혁신센터, Korea (Oct. 2022)</p>
+      <p>2022 SKHU 창업경진대회 장려상, 성공회대학교, Korea (Jun. 2022)</p>
+      <p>2022 예비창업패키지 최종선정 (40,000,000원), 대구창조경제혁신센터, Korea (May. 2022)</p>
+    </div>
+    <div class="resume-card">
+      <h3>특허</h3>
+      <p>1. SEONGMIN JU, SIHWAN SEOK, HAEWON JEON, HAIM LEE, "사용자 주도형 인공지능 데이터 수집 방법 및 시스템", KR-Application No. 10-2023-0005909</p>
+      <p>2. SEONGMIN JU, "DauCus(데이커스)", KR-Application No. 40-2022-0239713</p>
+    </div>
+    <div class="resume-card">
+      <h3>해외 및 기타 경험</h3>
+      <p>해외 경험: CES 2023 → Observe and Survey Technology with Generative AI and Data; Visit UC Berkeley and Silicon Valley companies → Survey of Start-up System and Culture in the U.S</p>
+      <p>교육 활동: 5 online teaching assistants, 5 offline training assistants 등 다양한 교육 활동 진행</p>
+    </div>
+    <div class="resume-card">
+      <h3>경력</h3>
+      <p>Contract Worker at Management Support Team, (주)리필, Korea (Jul. 2024 ~ Jan. 2025) – Management Support, Program Development, Market Research</p>
+      <p>CEO at management team, Happy Circuit, Korea (Mar. 2022 ~ Mar. 2024) – Life style platform for AI data collection, Item Planning and Management</p>
+      <p>Project Manager and UI/UX Designer at Planning and Operation Team, (주)온클라우드9, Korea (Sep. 2021 ~ Mar. 2022) – Service Planning and UI/UX Design</p>
+    </div>
+    <div class="resume-card">
+      <h3>기술 및 역량</h3>
+      <p>TOEIC Speaking IH (Intermediate High)</p>
+      <p>Pyt

@@ -1,476 +1,82 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>나의 개인 웹사이트</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #f4f4f4;
-      --text-color: #333;
-      --primary-color: #007BFF;
-      --accent-color: #ffdd57;
-      --header-bg: rgba(0,0,0,0.7);
-      --header-text: #fff;
-    }
-    .dark-mode {
-      --bg-color: #222;
-      --text-color: #eee;
-      --primary-color: #66afe9;
-      --accent-color: #f0ad4e;
-      --header-bg: rgba(0,0,0,0.9);
-      --header-text: #fff;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      overflow-x: hidden;
-      transition: background 0.3s, color 0.3s;
-    }
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--header-bg);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      padding: 15px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo h1 {
-      font-family: 'Poppins', sans-serif;
-      color: var(--header-text);
-      font-size: 1.8rem;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-    }
-    .menu {
-      display: flex;
-      align-items: center;
-    }
-    .menu a {
-      color: var(--header-text);
-      text-decoration: none;
-      margin-left: 25px;
-      font-weight: 600;
-      position: relative;
-      transition: color 0.3s;
-    }
-    .menu a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--accent-color);
-      left: 0;
-      bottom: -5px;
-      transition: width 0.3s;
-    }
-    .menu a:hover {
-      color: var(--accent-color);
-    }
-    .menu a:hover::after {
-      width: 100%;
-    }
-    .toggle-mode {
-      background: none;
-      border: 2px solid var(--header-text);
-      color: var(--header-text);
-      padding: 5px 10px;
-      margin-left: 25px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
-    }
-    .toggle-mode:hover {
-      background: var(--accent-color);
-      transform: scale(1.05);
-    }
-    /* 햄버거 메뉴 */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      margin-left: 25px;
-    }
-    .hamburger span {
-      height: 3px;
-      width: 25px;
-      background: var(--header-text);
-      margin-bottom: 4px;
-      border-radius: 3px;
-      transition: all 0.3s;
-    }
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      background: linear-gradient(135deg, rgba(42,42,42,0.7), rgba(0,0,0,0.7)), url('bg-welcome.jpg') center/cover no-repeat;
-      background-attachment: fixed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      animation: zoomIn 1s ease-out;
-      margin-top: 70px;
-    }
-    .hero h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 4rem;
-      color: #fff;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-      animation: fadeInDown 1.5s ease-out;
-    }
-    /* Intro Section */
-    #intro {
-      background: var(--bg-color);
-      padding: 80px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    #intro::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -50%;
-      width: 200%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(255,221,87,0.2) 0%, rgba(0,123,255,0.2) 100%);
-      transform: skewX(-15deg);
-      z-index: -1;
-      animation: slideInBackground 3s ease-in-out infinite alternate;
-    }
-    .intro-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-    }
-    .profile-image {
-      flex: 1;
-      max-width: 300px;
-      margin: 20px;
-      animation: fadeInUp 1s ease-out;
-    }
-    .profile-image img {
-      width: 100%;
-      border-radius: 50%;
-      border: 5px solid var(--primary-color);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .profile-image img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-    .profile-info {
-      flex: 2;
-      margin: 20px;
-      animation: fadeInUp 1s ease-out;
-    }
-    .profile-info h2 {
-      font-family: 'Poppins', sans-serif;
-      color: var(--primary-color);
-      margin-bottom: 15px;
-      font-size: 2.5rem;
-    }
-    .profile-info p {
-      margin: 10px 0;
-      font-size: 1.1rem;
-    }
-    /* Resume Section */
-    #resume {
-      background: #f0f8ff;
-      padding: 80px 20px;
-    }
-    #resume h2 {
-      text-align: center;
-      margin-bottom: 50px;
-      font-family: 'Poppins', sans-serif;
-      color: var(--primary-color);
-      font-size: 3rem;
-      position: relative;
-      display: inline-block;
-    }
-    #resume h2::after {
-      content: '';
-      width: 60%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-      position: absolute;
-      bottom: -10px;
-      left: 20%;
-      border-radius: 2px;
-    }
-    .resume-card {
-      background: var(--bg-color);
-      padding: 30px;
-      border-left: 6px solid var(--primary-color);
-      margin-bottom: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s ease-out forwards;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .resume-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-    .resume-card h3 {
-      font-family: 'Poppins', sans-serif;
-      color: var(--primary-color);
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-    }
-    .resume-card p {
-      margin: 8px 0;
-      font-size: 1rem;
-    }
-    .btn {
-      display: inline-block;
-      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      margin-top: 15px;
-      font-weight: 600;
-      transition: background 0.3s, transform 0.3s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-    }
-    /* Contact Section */
-    #contact {
-      background: var(--bg-color);
-      padding: 60px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-      margin: 40px 20px;
-      animation: fadeIn 1s ease-out;
-    }
-    #contact h2 {
-      font-family: 'Poppins', sans-serif;
-      color: var(--primary-color);
-      margin-bottom: 20px;
-      font-size: 2.5rem;
-    }
-    #contact p {
-      font-size: 1.1rem;
-      margin: 10px 0;
-    }
-    /* Footer */
-    footer {
-      background: #333;
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-    }
-    footer p {
-      font-size: 0.9rem;
-    }
-    /* Animations */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes zoomIn {
-      from { transform: scale(1.1); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideInBackground {
-      from { transform: translateX(0) skewX(-15deg); }
-      to { transform: translateX(10%) skewX(-15deg); }
-    }
-    /* Responsive */
-    @media (max-width: 768px) {
-      .intro-wrapper {
-        flex-direction: column;
-      }
-      .profile-image, .profile-info {
-        margin: 10px;
-      }
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-      .menu {
-        display: none;
-        flex-direction: column;
-        background: var(--header-bg);
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        border-radius: 5px;
-        padding: 10px;
-      }
-      .menu.active {
-        display: flex;
-      }
-      .hamburger {
-        display: flex;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주성민 개인 홈페이지</title>
+    <style>
+        body { margin: 0; font-family: sans-serif; line-height: 1.6; color: #333; }
+        header { background: #f4f4f4; padding: 1rem 2rem; position: sticky; top: 0; }
+        header h1 { margin: 0; font-size: 2rem; display: inline-block; }
+        nav { display: inline-block; float: right; }
+        nav a { margin-left: 1rem; text-decoration: none; color: #333; }
+        section { padding: 4rem 2rem; }
+        section:nth-of-type(even) { background: #fafafa; }
+        h2 { margin-top: 0; font-size: 1.75rem; }
+        ul { list-style: none; padding: 0; }
+        ul li { margin-bottom: 0.5rem; }
+        footer { text-align: center; padding: 2rem; background: #f4f4f4; }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
-      <div class="logo">
-        <h1>Ju Seong Min</h1>
-      </div>
-      <nav>
-        <div class="menu" id="nav-menu">
-          <a href="#intro">소개</a>
-          <a href="#resume">이력</a>
-          <a href="#contact">연락처</a>
-          <button class="toggle-mode" id="mode-toggle">다크 모드</button>
-        </div>
-        <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
-    </div>
-  </header>
-  <section class="hero">
-    <h1>Welcome to My Personal Page</h1>
-  </section>
-  <section id="intro">
-    <div class="container">
-      <div class="intro-wrapper">
-        <div class="profile-image">
-          <img src="profile.jpg" alt="프로필 이미지">
-        </div>
-        <div class="profile-info">
-          <h2>안녕하세요, 저는 주성민 입니다.</h2>
-          <p>지속가능한 가치를 탐구하고 혁신 기술을 브랜딩으로 연결하는 연구자입니다.</p>
-          <p><strong>신분:</strong> Undergraduate student</p>
-          <p><strong>학교:</strong> Daegu Gyeongbuk Institute of Science and Technology</p>
-          <p><strong>주소:</strong> 333 Techno jungang-daero, Hyeonpung-eup, Dalseong-gun, Daegu, 42988, Republic of Korea</p>
-          <p><strong>관심분야:</strong> HCI / Explainable-AI / LLM / Healthcare / Ondevice-AI</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="resume">
-    <div class="container">
-      <h2>이력</h2>
-      <div class="resume-card" style="animation-delay: 0.2s;">
-        <h3>학력 및 연구</h3>
-        <p><strong>기간:</strong> Mar. 2021 ~ Present</p>
-        <p><strong>학교:</strong> Daegu Gyeongbuk Institute of Science and Technology, School of Undergraduate Studies</p>
-        <p><strong>Thesis:</strong> Development of Explainable AI System for Emotion Recognition and Application</p>
-        <p><strong>지도교수:</strong> jeanyoung Song</p>
-        <p><strong>학위:</strong> Bachelor Student</p>
-      </div>
-      <div class="resume-card" style="animation-delay: 0.4s;">
-        <h3>연구 경험</h3>
-        <p><strong>Research Student:</strong> Electrical Engineering and Computer Science, DGIST, Korea (Mar. 2024 ~ Aug. 2024) - HCI Research Planning in Autonomous Driving System</p>
-        <p><strong>Research Intern:</strong> DGIST, Korea (Dec. 2023 ~ Jan. 2024) - Study on the Explainable Multimodal Emotion Recognition System</p>
-        <p><strong>Research Intern:</strong> DGIST, Korea (Jun. 2023 ~ Jul. 2023) - Paper review on Human-AI</p>
-      </div>
-      <div class="resume-card" style="animation-delay: 0.6s;">
-        <h3>논문 및 프로젝트</h3>
-        <p>Thesis Accepted by Taking UGRP Course, DGIST, Korea (Jan. 2023 ~ Dec. 2023)</p>
-        <p>1. A Study on Multi-Modal Emotion Recognition Systems.</p>
-        <p>2. Exploring explainable artificial intelligence (XAI) methodologies.</p>
-        <p>3. Proposed an explainable multimodal emotion recognition system by the pseudocode.</p>
-      </div>
-      <div class="resume-card" style="animation-delay: 0.8s;">
-        <h3>수상 이력</h3>
-        <p>2023 청년 창업경진대회 동상, 대구광역시 북구청, Korea (Apr. 2023)</p>
-        <p>PCEO X ACCEL 사업아이디어 공모전 개인부문 우수상, POSTECH 영재기업인교육원, Korea (Nov. 2022)</p>
-        <p>PCEO X ACCEL 사업아이디어 공모전 팀부문 우수상, POSTECH 영재기업인교육원, Korea (Nov. 2022)</p>
-        <p>2022 ClutG-Star League 최우수상, 대구창조경제혁신센터, Korea (Nov. 2022)</p>
-        <p>2022 Global Innovator Festa K-리그 우수상, 대구창조경제혁신센터, Korea (Oct. 2022)</p>
-        <p>2022 SKHU 창업경진대회 장려상, 성공회대학교, Korea (Jun. 2022)</p>
-        <p>2022 예비창업패키지 최종선정 (40,000,000원), 대구창조경제혁신센터, Korea (May. 2022)</p>
-      </div>
-      <div class="resume-card" style="animation-delay: 1s;">
-        <h3>회사 경력</h3>
-        <p>Contract Worker at Management Support Team, (주)리필, Korea (Jul. 2024 ~ Jan. 2025) – Management Support, Program Development, Market Research</p>
-        <p>CEO at management team, Happy Circuit, Korea (Mar. 2022 ~ Mar. 2024) – Life style platform for AI data collection, Item Planning and Management</p>
-        <p>Project Manager and UI/UX Designer at Planning and Operation Team, (주)온클라우드9, Korea (Sep. 2021 ~ Mar. 2022) – Service Planning and UI/UX Design</p>
-      </div>
-      <div class="resume-card" style="animation-delay: 1.2s;">
-        <h3>기술 및 역량</h3>
-        <p>TOEIC Speaking IH (Intermediate High)</p>
-        <p>Python, C++, Raspberry Pi</p>
-        <p>Figma</p>
-      </div>
-      <div class="resume-card" style="animation-delay: 1.4s;">
-        <h3>기타 경험</h3>
-        <p>4차산업혁명 청년체험단 5기 활동 (Sep. 2022 ~ Feb. 2023)</p>
-        <p>1. CES 2023 → Observe and Survey Technology with Generative AI and Data</p>
-        <p>2. Visit UC Berkeley and Silicon Valley companies → Survey of Start-up System and Culture in the U.S</p>
-        <p>POSTECH 영재기업인교육원 Educational Assistant (Jan. 2022 ~ )</p>
-        <p>1. 5 online teaching assistants, 5 offline training assistants experience</p>
-        <p>2. Conducting educational activities necessary to cultivate entrepreneurs, such as patent application, business opportunity search, business model, and business plan preparation</p>
-      </div>
-      <div class="resume-card" style="animation-delay: 1.6s;">
-        <h3>기타</h3>
-        <a href="CV_주성민.pdf" target="_blank" class="btn">이력서 전체보기</a>
-      </div>
-    </div>
-  </section>
-  <section id="contact">
-    <div class="container">
-      <h2>연락처</h2>
-      <p><strong>이메일:</strong> netraa2008@dgist.ac.kr</p>
-      <p><strong>전화번호:</strong> +82) 10-2128-2204</p>
-      <p><strong>인스타그램:</strong> @pictureveler_0244</p>
-    </div>
-  </section>
-  <footer>
-    <div class="container">
-      <p>© 2025 JU SEONG MIN. All rights reserved.</p>
-    </div>
-  </footer>
-  <script>
-    window.onload = function(){
-      window.scrollTo(0,0);
-    };
-    const hamburger = document.getElementById("hamburger");
-    const navMenu = document.getElementById("nav-menu");
-    hamburger.addEventListener("click", function(){
-      navMenu.classList.toggle("active");
-    });
-    const modeToggle = document.getElementById("mode-toggle");
-    modeToggle.addEventListener("click", function(){
-      document.body.classList.toggle("dark-mode");
-      modeToggle.textContent = document.body.classList.contains("dark-mode") ? "라이트 모드" : "다크 모드";
-    });
-  </script>
+    <header>
+        <h1>주성민 (Seongmin Ju)</h1>
+        <nav>
+            <a href="#about">소개</a>
+            <a href="#education">학력</a>
+            <a href="#experience">경력</a>
+            <a href="#projects">프로젝트</a>
+            <a href="#skills">기술 스택</a>
+            <a href="#contact">연락처</a>
+        </nav>
+    </header>
+    <section id="about">
+        <h2>소개</h2>
+        <p>안녕하세요, 대구경북과학기술원 컴퓨터공학과 4학년 주성민입니다. 인간-컴퓨터 상호작용 및 감정 인식을 위한 설명가능 AI 시스템 개발에 관심이 있으며, 졸업 논문에서 해당 주제로 연구를 진행했습니다.</p>
+    </section>
+    <section id="education">
+        <h2>학력</h2>
+        <ul>
+            <li>2021.03 – 현재: 대구경북과학기술원( DGIST ) 컴퓨터공학과 학부 (GPA: 3.38/4.3)</li>
+        </ul>
+    </section>
+    <section id="experience">
+        <h2>경력</h2>
+        <ul>
+            <li>4차산업혁명 청년체험단 5기 (2022.09 – 2023.02)<br>
+                • CES 2023 기술 조사 (Generative AI 및 데이터) <br>
+                • UC Berkeley·실리콘밸리 스타트업 문화 조사
+            </li>
+            <li>POSTECH 영재기업인교육원 교육 어시스턴트 (2022.01 – 현재)<br>
+                • 온라인·오프라인 교육 보조 <br>
+                • 특허 출원, 사업 기회 탐색, 비즈니스 모델 및 사업계획서 작성 지원
+            </li>
+        </ul>
+    </section>
+    <section id="projects">
+        <h2>프로젝트</h2>
+        <ul>
+            <li>졸업 논문: 설명가능 AI 시스템을 활용한 감정 인식 및 응용 개발 (지도교수: 송재영)</li>
+            <li>특허: DauCus(데이커스), KR-Application No. 40-2022-0239713</li>
+        </ul>
+    </section>
+    <section id="skills">
+        <h2>기술 스택</h2>
+        <ul>
+            <li>프로그래밍 언어: Python, C++</li>
+            <li>하드웨어: Raspberry Pi</li>
+            <li>디자인 툴: Figma</li>
+            <li>언어: TOEIC Speaking IH (Intermediate High)</li>
+        </ul>
+    </section>
+    <section id="contact">
+        <h2>연락처</h2>
+        <p>이메일: netraa2008@dgist.ac.kr</p>
+        <p>전화: +82-10-2128-2204</p>
+        <p>깃허브: <a href="https://github.com/netraa2008" target="_blank">github.com/netraa2008</a></p>
+    </section>
+    <footer>
+        © 2025 주성민
+    </footer>
 </body>
 </html>

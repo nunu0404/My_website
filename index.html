@@ -3,65 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>주성민 개인 홈페이지</title>
+    <title>주성민 CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { margin: 0; font-family: sans-serif; line-height: 1.6; color: #333; }
-        header { background: #f4f4f4; padding: 1rem 2rem; position: sticky; top: 0; }
-        header h1 { margin: 0; font-size: 2rem; display: inline-block; }
-        nav { display: inline-block; float: right; }
-        nav a { margin-left: 1rem; text-decoration: none; color: #333; }
-        section { padding: 4rem 2rem; }
-        section:nth-of-type(even) { background: #fafafa; }
-        h2 { margin-top: 0; font-size: 1.75rem; }
-        ul { list-style: none; padding: 0; }
-        ul li { margin-bottom: 0.5rem; }
-        footer { text-align: center; padding: 2rem; background: #f4f4f4; }
+        body { font-family: 'Segoe UI', sans-serif; max-width: 800px; margin: auto; padding: 2rem; color: #333; }
+        h1 { text-align: center; font-size: 2.5rem; margin-bottom: 0.2rem; }
+        h2.subtitle { text-align: center; font-size: 1.2rem; color: #666; margin-top: 0; }
+        .social { text-align: center; margin: 1rem 0; }
+        .social a { margin: 0 0.5rem; font-size: 1.5rem; color: #333; text-decoration: none; }
+        p.contact { text-align: center; font-size: 0.9rem; color: #555; margin-bottom: 2rem; }
+        section { margin-top: 2rem; }
+        section h2 { font-size: 1.4rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        .subsection { margin-bottom: 1rem; }
+        .subsection h3 { font-size: 1.1rem; margin: 0; }
+        .period { font-size: 0.9rem; color: #999; margin-bottom: 0.3rem; }
+        ul { margin: 0; padding-left: 1.2rem; }
+        .download { text-align: center; margin-top: 2rem; }
+        .download a { text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>주성민 (Seongmin Ju)</h1>
-        <nav>
-            <a href="#about">소개</a>
-            <a href="#education">학력</a>
-            <a href="#experience">경력</a>
-            <a href="#projects">프로젝트</a>
-            <a href="#skills">기술 스택</a>
-            <a href="#contact">연락처</a>
-        </nav>
-    </header>
+    <h1>주성민 (Seongmin Ju)</h1>
+    <h2 class="subtitle">컴퓨터공학과 학생 · 설명가능 AI 시스템 연구자</h2>
+    <div class="social">
+        <a href="https://github.com/netraa2008" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/your-linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/your-twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p class="contact">Email: netraa2008@dgist.ac.kr | Phone: +82-10-2128-2204</p>
+
     <section id="about">
-        <h2>소개</h2>
+        <h2>About Me</h2>
         <p>안녕하세요, 대구경북과학기술원 컴퓨터공학과 4학년 주성민입니다. 인간-컴퓨터 상호작용 및 감정 인식을 위한 설명가능 AI 시스템 개발에 관심이 있으며, 졸업 논문에서 해당 주제로 연구를 진행했습니다.</p>
     </section>
+
     <section id="education">
-        <h2>학력</h2>
-        <ul>
-            <li>2021.03 – 현재: 대구경북과학기술원( DGIST ) 컴퓨터공학과 학부 (GPA: 3.38/4.3)</li>
-        </ul>
+        <h2>Education</h2>
+        <div class="subsection">
+            <h3>DGIST (대구경북과학기술원), 컴퓨터공학과</h3>
+            <div class="period">2021.03 – 현재 (GPA: 3.38/4.3)</div>
+        </div>
     </section>
+
     <section id="experience">
-        <h2>경력</h2>
-        <ul>
-            <li>4차산업혁명 청년체험단 5기 (2022.09 – 2023.02)<br>
-                • CES 2023 기술 조사 (Generative AI 및 데이터) <br>
-                • UC Berkeley·실리콘밸리 스타트업 문화 조사
-            </li>
-            <li>POSTECH 영재기업인교육원 교육 어시스턴트 (2022.01 – 현재)<br>
-                • 온라인·오프라인 교육 보조 <br>
-                • 특허 출원, 사업 기회 탐색, 비즈니스 모델 및 사업계획서 작성 지원
-            </li>
-        </ul>
+        <h2>Experience</h2>
+        <div class="subsection">
+            <h3>4차산업혁명 청년체험단 5기</h3>
+            <div class="period">2022.09 – 2023.02</div>
+            <ul>
+                <li>CES 2023 기술 조사 (Generative AI 및 데이터)</li>
+                <li>UC Berkeley·실리콘밸리 스타트업 문화 조사</li>
+            </ul>
+        </div>
+        <div class="subsection">
+            <h3>POSTECH 영재기업인교육원 교육 어시스턴트</h3>
+            <div class="period">2022.01 – 현재</div>
+            <ul>
+                <li>온라인·오프라인 교육 보조</li>
+                <li>특허 출원, 사업 기회 탐색, 비즈니스 모델 및 사업계획서 작성 지원</li>
+            </ul>
+        </div>
     </section>
+
     <section id="projects">
-        <h2>프로젝트</h2>
-        <ul>
-            <li>졸업 논문: 설명가능 AI 시스템을 활용한 감정 인식 및 응용 개발 (지도교수: 송재영)</li>
-            <li>특허: DauCus(데이커스), KR-Application No. 40-2022-0239713</li>
-        </ul>
+        <h2>Projects & Patents</h2>
+        <div class="subsection">
+            <h3>졸업 논문: 설명가능 AI 시스템을 활용한 감정 인식 및 응용 개발</h3>
+            <div class="period">지도교수: 송재영</div>
+        </div>
+        <div class="subsection">
+            <h3>Patent: DauCus (데이커스)</h3>
+            <div class="period">KR-Application No. 40-2022-0239713</div>
+        </div>
     </section>
+
     <section id="skills">
-        <h2>기술 스택</h2>
+        <h2>Skills</h2>
         <ul>
             <li>프로그래밍 언어: Python, C++</li>
             <li>하드웨어: Raspberry Pi</li>
@@ -69,14 +86,9 @@
             <li>언어: TOEIC Speaking IH (Intermediate High)</li>
         </ul>
     </section>
-    <section id="contact">
-        <h2>연락처</h2>
-        <p>이메일: netraa2008@dgist.ac.kr</p>
-        <p>전화: +82-10-2128-2204</p>
-        <p>깃허브: <a href="https://github.com/netraa2008" target="_blank">github.com/netraa2008</a></p>
-    </section>
-    <footer>
-        © 2025 주성민
-    </footer>
+
+    <div class="download">
+        <a href="CV_주성민.pdf" download>Download Resume</a>
+    </div>
 </body>
 </html>
